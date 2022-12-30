@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Movies</title>
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="/">MYSHOWS</a>
+                <div><input type="text" /><button>Search</button></div>
+                <button>Search</button>
+            </nav>
+            <div>
+                <p>Action</p>
+                <p>Crime</p>
+                <p>Comedy</p>
+                <p>Drama</p>
+                <p>Horror</p>
+                <p>Music</p>
+                <p>Comedy</p>
+            </div>
+        </header>
+        <main class="home">
+            <% movieResults.forEach( movie => { %>
+            <div>
+                <img
+                    src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>"
+                    alt=""
+                />
+                <p><%= movie.title %></p>
+                <p><%= movie.release_date %></p>
+                <a href="/movie/<%= movie.id %>">Show more</a>
+            </div>
+            <% }) %>
+        </main>
+        <footer>
+            <ul>
+                <% paginationArray.forEach(page => { %>
+                <li>
+                    <% if(page === currentPage) {%> <%= page %> <% } else {%>
+                    <a href="/movies/<%= page %>"><%= page %></a>
+                    <% } %>
+                </li>
+                <% })%>
+            </ul>
+        </footer>
+    </body>
+</html>
